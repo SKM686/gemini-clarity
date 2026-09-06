@@ -520,4 +520,3 @@ On your GitHub repository:
 AI-generated insights never replace the underlying journal evidence.
 ```
 
-After you click **Commit changes**, tell me **“README committed”**. Then we'll do **Step 3: prepare your competition demo/video**, with the exact screen-by-screen sequence and what you should say to the judges.
