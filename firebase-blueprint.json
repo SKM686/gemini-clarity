@@ -1,0 +1,154 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with preferences and account timestamps.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "preferences": {
+          "type": "object",
+          "properties": {
+            "reflectionReminders": { "type": "boolean" },
+            "weeklyReviewDay": { "type": "string", "enum": ["sunday", "monday", "friday"] }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "createdAt", "updatedAt"]
+    },
+    "Reflection": {
+      "title": "Reflection",
+      "description": "Personal reflection or journal entry.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "content": { "type": "string", "maxLength": 50000 },
+        "summary": { "type": "string" },
+        "keyThemes": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "title", "content", "createdAt", "updatedAt"]
+    },
+    "Conversation": {
+      "title": "Conversation",
+      "description": "Multi-turn conversation with Gemini thinking companion.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "associatedReflectionId": { "type": "string" },
+        "messages": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "title", "messages", "createdAt", "updatedAt"]
+    },
+    "Decision": {
+      "title": "Decision",
+      "description": "Decision structured via Decision Companion.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string", "maxLength": 200 },
+        "context": { "type": "string", "maxLength": 10000 },
+        "options": { "type": "array" },
+        "chosenOption": { "type": "string" },
+        "status": { "type": "string", "enum": ["deliberating", "decided", "revisiting"] },
+        "revisitDate": { "type": "string" },
+        "revisitReflection": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "title", "context", "options", "status", "createdAt", "updatedAt"]
+    },
+    "LifeThread": {
+      "title": "LifeThread",
+      "description": "Recurring theme identified across reflections.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "themeName": { "type": "string" },
+        "narrativeSummary": { "type": "string" },
+        "supportingReflectionIds": { "type": "array" },
+        "evidenceList": { "type": "array" },
+        "firstObservedAt": { "type": "string", "format": "date-time" },
+        "lastObservedAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "themeName", "narrativeSummary", "supportingReflectionIds", "firstObservedAt", "lastObservedAt", "updatedAt"]
+    },
+    "Insight": {
+      "title": "Insight",
+      "description": "Specific insight synthesized from a reflection.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "reflectionId": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "keyObservations": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "title", "content", "createdAt"]
+    },
+    "WeeklyReview": {
+      "title": "WeeklyReview",
+      "description": "Weekly synthesis of reflections and decisions.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "periodStart": { "type": "string" },
+        "periodEnd": { "type": "string" },
+        "reflectionCount": { "type": "number" },
+        "summarySynthesis": { "type": "string" },
+        "recurringThemes": { "type": "array" },
+        "growthObservations": { "type": "array" },
+        "supportingReflectionIds": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "periodStart", "periodEnd", "reflectionCount", "summarySynthesis", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "UserProfile",
+      "description": "Root user profile document containing user preferences and metadata."
+    },
+    "/users/{uid}/reflections/{reflectionId}": {
+      "schema": "Reflection",
+      "description": "User journal entries and reflections."
+    },
+    "/users/{uid}/conversations/{conversationId}": {
+      "schema": "Conversation",
+      "description": "User thinking companion conversations."
+    },
+    "/users/{uid}/decisions/{decisionId}": {
+      "schema": "Decision",
+      "description": "User decision records with options and revisit logs."
+    },
+    "/users/{uid}/threads/{threadId}": {
+      "schema": "LifeThread",
+      "description": "Derived life threads linking user reflections."
+    },
+    "/users/{uid}/insights/{insightId}": {
+      "schema": "Insight",
+      "description": "Derived reflection insights."
+    },
+    "/users/{uid}/weeklyReviews/{reviewId}": {
+      "schema": "WeeklyReview",
+      "description": "Synthesized private weekly reviews."
+    }
+  }
+}

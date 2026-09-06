@@ -1,0 +1,6 @@
+{
+  "name": "Gemini Clarity",
+  "description": "Private AI thinking companion for structured reflections, Life Threads, decision companioning, and weekly clarity reviews.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
