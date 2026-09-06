@@ -1,4 +1,3 @@
-````markdown
 # Gemini Clarity
 
 ### Write anything. Understand everything.
@@ -35,11 +34,11 @@ Life Threads discovers meaningful connections across saved reflections.
 
 It can surface:
 
-- recurring thoughts
-- changing perspectives
-- repeated concerns
-- evolving decisions
-- unresolved questions
+* recurring thoughts
+* changing perspectives
+* repeated concerns
+* evolving decisions
+* unresolved questions
 
 Connections are grounded in the user's own saved reflections rather than invented personal history.
 
@@ -49,9 +48,9 @@ Ask natural-language questions about your journal.
 
 Responses separate:
 
-- **Answer** — what the journal evidence supports
-- **Evidence** — the reflections supporting the answer
-- **Gemini Interpretation** — Gemini's interpretation of the evidence
+* **Answer** — what the journal evidence supports
+* **Evidence** — the reflections supporting the answer
+* **Gemini Interpretation** — Gemini's interpretation of the evidence
 
 When the journal does not contain enough evidence, Gemini Clarity avoids fabricating an answer.
 
@@ -71,19 +70,17 @@ The browser never directly reads or writes the application's Firestore data.
 
 ## The Gemini Clarity Experience
 
-```text
 Write a thought
-      ↓
+↓
 Deepen with Gemini
-      ↓
+↓
 Save the reflection
-      ↓
+↓
 Discover Life Threads
-      ↓
+↓
 Ask My Journal
-      ↓
+↓
 Understand how your thinking evolves
-````
 
 ---
 
@@ -123,7 +120,7 @@ Understand how your thinking evolves
                               └─────────────────┘
 ```
 
-### Request flow
+### Request Flow
 
 1. The user authenticates with Google through Firebase Authentication.
 2. The browser obtains a Firebase ID token.
@@ -441,7 +438,7 @@ Server Startup: PASS
 
 ## Screenshots & Demo
 
-The following screenshots can be added here:
+Recommended screenshots:
 
 1. Home / Thought Canvas
 2. Reflection Editor
@@ -451,9 +448,7 @@ The following screenshots can be added here:
 
 ### Live Application
 
-```text
-https://gemini-clarity-1073609439419.us-west1.run.app
-```
+[https://gemini-clarity-1073609439419.us-west1.run.app](https://gemini-clarity-1073609439419.us-west1.run.app)
 
 ---
 
@@ -486,12 +481,8 @@ Potential future directions include:
 
 ## Privacy Principle
 
-Gemini Clarity is designed around a simple principle:
+> **Your journal belongs to you.**
 
-> Your journal belongs to you.
-
-AI helps interpret and connect your reflections, but the system should distinguish between what your journal actually contains and what Gemini infers from it.
+AI helps interpret and connect your reflections, but the system distinguishes between what your journal actually contains and what Gemini infers from those reflections.
 
 AI-generated insights never replace the underlying journal evidence.
-
-````
