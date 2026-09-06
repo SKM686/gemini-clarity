@@ -495,28 +495,3 @@ AI helps interpret and connect your reflections, but the system should distingui
 AI-generated insights never replace the underlying journal evidence.
 
 ````
-
-## Where exactly to copy
-
-On your GitHub repository:
-
-**1. Open** `https://github.com/SKM686/gemini-clarity`
-
-**2. Click** **Add a README**
-
-**3. GitHub will show a large text editor.**
-
-**4. Delete anything GitHub has automatically placed there.**
-
-**5. Copy the entire block above, starting from:**
-
-```text
-# Gemini Clarity
-````
-
-**and ending with:**
-
-```text
-AI-generated insights never replace the underlying journal evidence.
-```
-
